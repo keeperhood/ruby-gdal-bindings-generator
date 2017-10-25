@@ -12,9 +12,9 @@ docker cp $CONTAINER_ID:"/gdal-$GDAL_VERSION/swig/ruby/gdal_wrap.cpp" generated/
 docker cp $CONTAINER_ID:"/gdal-$GDAL_VERSION/swig/ruby/ogr_wrap.cpp" generated/ogr.cpp
 docker cp $CONTAINER_ID:"/gdal-$GDAL_VERSION/swig/ruby/osr_wrap.cpp" generated/osr.cpp
 
-sed -i "s/ogr_get_driver/get_driver/" generated/ogr.cpp
-sed -i "s/gdal_get_driver/get_driver/" generated/gdal.cpp
-sed -i '/rb_require("gdal\/osr")/d' generated/ogr.cpp
+sed -i '' 's/"ogr_get_driver/"get_driver/' generated/ogr.cpp
+sed -i '' 's/"gdal_get_driver/"get_driver/' generated/gdal.cpp
+sed -i '' '/rb_require("gdal\/osr")/d' generated/ogr.cpp
 
 docker stop $CONTAINER_ID
 docker rm $CONTAINER_ID
